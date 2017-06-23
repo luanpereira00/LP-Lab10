@@ -72,11 +72,11 @@ int main(){
 	cout << pil.temAlgo() << endl;
 	
 
-	
-	//int X[5];
-	//int N = 5;
+	/*
+	int *X = new int[5];
+	int N = 5;
 
-	/*createVetor(X, N);
+	createVetor(X, N);
 	printVetor(X, N);
 	bubbleSort(X, N);
 	printVetor(X, N);
@@ -105,10 +105,13 @@ int main(){
 	printVetor(X, N);
 	decimalSort(X, N);
 	printVetor(X, N);
-	
-	
-	int V[5] = {0, 2, 4, 5, 8};
+	delete X;*/
+	/*
+	int *V = new int[5];
+	createVetor(V, 5);
+	quickSort(V, N);
 	printVetor(V, 5);
+	cout << "Aqui" << endl;
 
 	cout << "BBR: " << buscaBinariaR(V, 5, 0) << endl;
 	cout << "BBR: " << buscaBinariaR(V, 5, 1) << endl;
@@ -153,6 +156,6 @@ int main(){
 	cout << "BTI: " << buscaTernariaI(V, 0, 0) << endl;
 	cout << "BSR: " << buscaSequencialR(V, 0, 0) << endl;
 	cout << "BSI: " << buscaSequencialI(V, 0, 0) << endl;
-*/
+	delete V;*/
 	return 0;
 }
