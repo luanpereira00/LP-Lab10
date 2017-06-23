@@ -9,10 +9,7 @@
 #ifndef _PILHA_H_
 #define _PILHA_H_
 
-#include <iostream>
-using std::cout;
-using std::endl;
-
+#include "exceptions.h"
 
 /**@brief Namespace para EDB1 */
 namespace EDB1{
@@ -98,22 +95,29 @@ namespace EDB1{
 
 		/** @return Retorna o elemento do topo da pilha */
 		T top(){ 
-			if(getTam()>0){
-				return vetor[getTam()-1];
+			try{
+				if(getTam()>0){
+					return vetor[getTam()-1];
+				} else throw ImprimirTEDVazio();
+			}catch (ImprimirTEDVazio &ex){
+				cerr << ex.what() << endl;
 			}
-			else cout << "Pilha vazia! Retornando 0 por default..." << endl;
 			return 0;
 		}
 
 		/** @brief Remove o elemento do topo da pilha */
 		void pop(){
-			if(getTam()>0) {
-				T *antigo = vetor;
-				T *novo = new T[getTam()-1];
-				for (int  i=0; i<getTam()-1; i++) novo[i]=antigo[i];
-				setTam(getTam()-1);
-				setVetor(novo);
-				delete[] antigo;
+			try{
+				if(getTam()>0) {
+					T *antigo = vetor;
+					T *novo = new T[getTam()-1];
+					for (int  i=0; i<getTam()-1; i++) novo[i]=antigo[i];
+					setTam(getTam()-1);
+					setVetor(novo);
+					delete[] antigo;
+				}else throw RemoverDeTEDVazio();
+			}catch (RemoverDeTEDVazio &ex){
+				cerr << ex.what() << endl;
 			}
 		}
 

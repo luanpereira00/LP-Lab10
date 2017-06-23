@@ -10,6 +10,8 @@
 #ifndef _FILA_H_
 #define _FILA_H_
 
+#include "exceptions.h"
+
 /**@brief Namespace para EDB1 */
 namespace EDB1{
 	/** @brief Declaracao de template para o tipo T (int, float, double...)*/
@@ -33,7 +35,7 @@ namespace EDB1{
 	  * @brief 	Classe que representa uma Fila de dados
  	  * @details Os atributos de uma Fila sao as sentinelas de inicio e de fim 
 	 */
-	class Fila{
+	class Fila {
 	private:
 		nodeFila<T>* inicio; /**< Sentinela de inicio da lista*/
 		nodeFila<T>* fim; /**< Sentinela de fim da lista*/
@@ -99,37 +101,43 @@ namespace EDB1{
 		* @param el O elemento que sera removido da lista 
 		*/
 		void remover(){
-			//cout << endl;
-			//cout << "Removendo o elemento " << el << endl;
-			//nodeFila<T>* it = buscar(el);
+			
 			nodeFila<T>* it = inicio;
-			if(it->prox->prox){
-				nodeFila<T>* tmp = new nodeFila<T>;
-				tmp->prox=it->prox->prox;
-				tmp->anter=it;
+			try{
+				if(it->prox->prox){
+					nodeFila<T>* tmp = new nodeFila<T>;
+					tmp->prox=it->prox->prox;
+					tmp->anter=it;
 
-				delete it->prox; 
+					delete it->prox; 
 
-				it->prox=tmp->prox;
-				it->prox->anter=tmp->anter;
+					it->prox=tmp->prox;
+					it->prox->anter=tmp->anter;
 
-				delete tmp; 
+					delete tmp; 
+				}
+				else throw RemoverDeTEDVazio();
+			}catch (RemoverDeTEDVazio &ex){
+				cerr << ex.what() << endl;
 			}
-			else cerr << "ERRO: Impossivel remover elementos da fila (FILA VAZIA!) ...Continuando operacoes" << endl;
 		}
 
 		/** @brief Imprime toda a lista ligada*/
 		void imprimir(){
 			nodeFila<T>* it = inicio;
-			if(it->prox->prox){
-				cout << "-----------------------" << endl;
-				cout << "Fila: " << endl;
+			try{
+				if(it->prox->prox){
+					cout << "-----------------------" << endl;
+					cout << "Fila: " << endl;
+					while(it->prox->prox){
+						cout << it->prox->dado << endl;
+						it=it->prox;
+					}
+					cout << "-----------------------" << endl;
+				}else throw ImprimirTEDVazio();
+			}catch (ImprimirTEDVazio &ex){
+				cerr << ex.what() << endl;
 			}
-			while(it->prox->prox){
-				cout << it->prox->dado << endl;
-				it=it->prox;
-			}
-			if(it->prox->prox) cout << "-----------------------" << endl;
 		}
 
 		/** 

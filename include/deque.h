@@ -9,11 +9,6 @@
 #ifndef _DEQUE_H_
 #define _DEQUE_H_
 
-#include <iostream>
-using std::cout;
-using std::cerr;
-using std::endl;
-
 #include "exceptions.h"
 
 /**@brief Namespace para EDB1 */

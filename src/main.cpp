@@ -21,7 +21,7 @@ using std::endl;
 using namespace EDB1;
 /**@brief Funcao principal */
 int main(){
-	
+	/*
 	Deque<int> deq;
 	deq.removerInicio();
 	deq.removerFim();
@@ -34,50 +34,79 @@ int main(){
 	deq.removerInicio();
 	deq.removerFim();
 	deq.imprimir();
-	/*
-	Lista<int> ll;
-	Fila<int> fi;
-	Pilha<int> pil;
-
-	cout << ll.temAlgo() << endl;
 	cout << deq.temAlgo() << endl;
-	cout << fi.temAlgo() << endl;
-	cout << pil.temAlgo() << endl;
-	cout << endl;
 	
-	int X[50];
+	
+	Fila<int> fi;
+	fi.remover();
+	fi.imprimir();
+	fi.inserir(1);
+	fi.inserir(2);
+	fi.imprimir();
+	fi.remover();
+	fi.remover();
+	fi.remover();
+	fi.imprimir();
+	cout << fi.temAlgo() << endl;
+	
 
-	createVetor(X, 50);
-	printVetor(X, 50);
-	bubbleSort(X, 50);
-	printVetor(X, 50);
+	Lista<int> ll;
+	ll.remover();
+	ll.imprimir();
+	ll.inserir(1);
+	ll.inserir(2);
+	ll.imprimir();
+	ll.remover();
+	ll.remover();
+	ll.remover();
+	ll.imprimir();
+	cout << ll.temAlgo() << endl;
+*/
+	Pilha<int> pil;
+	pil.pop();
+	cout << pil.top() << endl;
+	pil.push(5);
+	cout << pil.top() << endl;
+	pil.pop();
+	pil.pop();
+	cout << pil.temAlgo() << endl;
+	
+
+	
+	//int X[5];
+	//int N = 5;
+
+	/*createVetor(X, N);
+	printVetor(X, N);
+	bubbleSort(X, N);
+	printVetor(X, N);
 	cout << "======================================" << endl;
-	createVetor(X, 50);
-	printVetor(X, 50);
-	insertionSort(X, 50);
-	printVetor(X, 50);
+	createVetor(X, N);
+	printVetor(X, N);
+	insertionSort(X, N);
+	printVetor(X, N);
 	cout << "======================================" << endl;
-	createVetor(X, 50);
-	printVetor(X, 50);
-	selectionSort(X, 50);
-	printVetor(X, 50);
+	createVetor(X, N);
+	printVetor(X, N);
+	selectionSort(X, N);
+	printVetor(X, N);
 	cout << "======================================" << endl;
-	createVetor(X, 50);
-	printVetor(X, 50);
-	mergeSort(X, 50);
-	printVetor(X, 50);
+	createVetor(X, N);
+	printVetor(X, N);
+	mergeSort(X, N);
+	printVetor(X, N);
 	cout << "======================================" << endl;
-	createVetor(X, 50);
-	printVetor(X, 50);
-	quickSort(X, 50);
-	printVetor(X, 50);
+	createVetor(X, N);
+	printVetor(X, N);
+	quickSort(X, N);
+	printVetor(X, N);
 	cout << "======================================" << endl;
-	createVetor(X, 50);
-	printVetor(X, 50);
-	decimalSort(X, 50);
-	printVetor(X, 50);
-	*/
-	/*
+	createVetor(X, N);
+	printVetor(X, N);
+	decimalSort(X, N);
+	printVetor(X, N);
+	
+	
 	int V[5] = {0, 2, 4, 5, 8};
 	printVetor(V, 5);
 

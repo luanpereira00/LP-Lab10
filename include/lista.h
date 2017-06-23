@@ -9,7 +9,7 @@
 #ifndef _LISTA_H_
 #define _LISTA_H_
 
-#include "deque.h"
+#include "exceptions.h"
 
 /**@brief Namespace para EDB1 */
 namespace EDB1{
@@ -64,7 +64,7 @@ namespace EDB1{
 		}
 
 		/** @return Retorna a sentinela de inicio da lista ligada*/
-		nodeDeque<T>* getInicio(){
+		nodeLista<T>* getInicio(){
 			return inicio;
 		}
 
@@ -92,30 +92,38 @@ namespace EDB1{
 			//cout << "Removendo o elemento " << el << endl;
 			//nodeDeque<T>* it = buscar(el);
 			nodeLista<T>* it = inicio;
-			if(it->prox){
-				nodeLista<T>* tmp = new nodeLista<T>;
-				tmp->prox=it->prox->prox;
+			try{
+				if(it->prox){
+					nodeLista<T>* tmp = new nodeLista<T>;
+					tmp->prox=it->prox->prox;
 
-				delete it->prox; 
+					delete it->prox; 
 
-				it->prox=tmp->prox;
+					it->prox=tmp->prox;
 
-				delete tmp; 
+					delete tmp; 
+				}
+				else throw RemoverDeTEDVazio();
+			}catch (RemoverDeTEDVazio &ex){
+				cerr << ex.what() << endl;
 			}
-			else cerr << "ERRO: Impossivel remover elementos da lista (LISTA VAZIA!) ...Continuando operacoes" << endl;
 		}
 
 		/** @brief Imprime toda a lista ligada*/
 		void imprimir(){
 			nodeLista<T>* it = inicio;
-			if(it->prox){
-				cout << "-----------------------" << endl;
-				cout << "Lista: " << endl;
-				while(it->prox){
-					cout << it->prox->dado << endl;
-					it=it->prox;
-				}
-				cout << "-----------------------" << endl;
+			try{
+				if(it->prox){
+					cout << "-----------------------" << endl;
+					cout << "Lista: " << endl;
+					while(it->prox){
+						cout << it->prox->dado << endl;
+						it=it->prox;
+					}
+					cout << "-----------------------" << endl;
+				} else throw ImprimirTEDVazio();
+			}catch (ImprimirTEDVazio &ex){
+				cerr << ex.what() << endl;
 			}
 			
 		}
