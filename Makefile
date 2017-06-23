@@ -48,7 +48,7 @@ luan.a: $(SRC_DIR)/main.cpp $(INC_DIR)/busca.h $(INC_DIR)/vetor.h $(INC_DIR)/sor
 	$(AR) rcs $(LIB_DIR)/$@ $(OBJ_DIR)/main.o
 	@echo "++++ [Biblioteca estatica criada em $(LIB_DIR)/$@] +++" 
 
-luan.so: $(SRC_DIR)/main.cpp $(INC_DIR)/busca.h $(INC_DIR)/vetor.h $(INC_DIR)/sort.h $(INC_DIR)/pilha.h $(INC_DIR)/fila.h $(INC_DIR)/deque.h $(INC_DIR)/lista.h
+luan.so: $(SRC_DIR)/main.cpp $(INC_DIR)/busca.h $(INC_DIR)/vetor.h $(INC_DIR)/sort.h $(INC_DIR)/pilha.h $(INC_DIR)/fila.h $(INC_DIR)/deque.h $(INC_DIR)/lista.h $(INC_DIR)/exceptions.h 
 	$(CC) $(CFLAGS) -fPIC -c $(SRC_DIR)/main.cpp -o $(OBJ_DIR)/main.o
 	$(CC) -shared -fPIC -o $(LIB_DIR)/$@ $(OBJ_DIR)/main.o
 	@echo "++++ [Biblioteca dinamica criada em $(LIB_DIR)/$@] +++" 

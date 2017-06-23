@@ -14,6 +14,8 @@ using std::cout;
 using std::cerr;
 using std::endl;
 
+#include "exceptions.h"
+
 /**@brief Namespace para EDB1 */
 namespace EDB1{
 	/** @brief Declaracao de template para o tipo T (int, float, double...)*/
@@ -124,19 +126,23 @@ namespace EDB1{
 			//cout << "Removendo o elemento " << el << endl;
 			//nodeDeque<T>* it = buscar(el);
 			nodeDeque<T>* it = inicio;
-			if(it->prox->prox){
-				nodeDeque<T>* tmp = new nodeDeque<T>;
-				tmp->prox=it->prox->prox;
-				tmp->anter=it;
+			try{
+				if(it->prox->prox){
+					nodeDeque<T>* tmp = new nodeDeque<T>;
+					tmp->prox=it->prox->prox;
+					tmp->anter=it;
 
-				delete it->prox; 
+					delete it->prox; 
 
-				it->prox=tmp->prox;
-				it->prox->anter=tmp->anter;
+					it->prox=tmp->prox;
+					it->prox->anter=tmp->anter;
 
-				delete tmp; 
+					delete tmp; 
+				} 
+				else throw RemoverDeTEDVazio();
+			}catch (RemoverDeTEDVazio &ex){
+				cerr << ex.what() << endl;
 			}
-			else cerr << "ERRO: Impossivel remover elementos do deque (DEQUE VAZIO!) ...Continuando operacoes" << endl;
 		}
 
 		/** 
@@ -148,7 +154,8 @@ namespace EDB1{
 			//cout << "Removendo o elemento " << el << endl;
 			//nodeDeque<T>* it = buscar(el);
 			nodeDeque<T>* it = fim;
-			if(it->anter->anter){
+			try{
+				if(it->anter->anter){
 				nodeDeque<T>* tmp = new nodeDeque<T>;
 				tmp->anter=it->anter->anter;
 				tmp->prox=it;
@@ -159,22 +166,30 @@ namespace EDB1{
 				it->anter->prox=tmp->prox;
 
 				delete tmp; 
-			}
-			else cerr << "ERRO: Impossivel remover elementos do deque (DEQUE VAZIO!) ...Continuando operacoes" << endl;
+				}
+				else throw RemoverDeTEDVazio();
+			}catch (RemoverDeTEDVazio &ex){
+				cerr << ex.what() << endl;
+			} 
 		}
 
 		/** @brief Imprime toda a lista ligada*/
 		void imprimir(){
 			nodeDeque<T>* it = inicio;
-			if(it->prox->prox){
-				cout << "-----------------------" << endl;
-				cout << "Deque: " << endl;
+			try{
+				if(it->prox->prox){
+					cout << "-----------------------" << endl;
+					cout << "Deque: " << endl;
+					while(it->prox->prox){
+						cout << it->prox->dado << endl;
+						it=it->prox;
+					}
+					cout << "-----------------------" << endl;
+				}
+				else throw ImprimirTEDVazio();
+			}catch (ImprimirTEDVazio &ex){
+				cerr << ex.what() << endl;
 			}
-			while(it->prox->prox){
-				cout << it->prox->dado << endl;
-				it=it->prox;
-			}
-			if(it->prox->prox) cout << "-----------------------" << endl;
 		}
 
 		bool temAlgo(){

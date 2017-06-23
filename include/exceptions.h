@@ -5,5 +5,7 @@
 using std::exception;
 
 #include "tamanhoInvalido.h"
+#include "removerVazio.h"
+#include "imprimirVazio.h"
 
 #endif

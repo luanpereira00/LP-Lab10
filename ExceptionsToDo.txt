@@ -11,7 +11,7 @@ All: Alocação de memória
 
 
 A partir deste trecho, às seguintes exceções já foram resolvidas:
-- Busca:
+- Busca: All
 - Deque:
 - Fila:
 - Lista:

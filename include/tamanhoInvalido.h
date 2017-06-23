@@ -1,5 +1,5 @@
-#ifndef _TAMANHO_INVALIDO_
-#define _TAMANHO_INVALIDO_
+#ifndef _TAMANHO_INVALIDO_H_
+#define _TAMANHO_INVALIDO_H_
 
 #include <exception>
 using std::exception;
