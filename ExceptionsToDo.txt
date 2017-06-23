@@ -1,0 +1,18 @@
+Este arquivo contém as Exceções previamente identificadas e que deverão ser consertadas.
+- Busca: N<1; Elemento não estar no vetor;  
+- Deque: Remover sem elementos; Imprimir deque vazia; Buscar elemento que não está no deque;
+- Fila: Remover fila vazia; Imprimir fila vazia;
+- Lista: Remover sem elementos; Imprimir lista vazia; Buscar elemento que não esta na lista;
+- Pilha: Pop em pilha vazia;
+- Sort: 
+- Vetor:
+
+
+A partir deste trecho, às seguintes exceções já foram resolvidas:
+- Busca:
+- Deque:
+- Fila:
+- Lista:
+- Pilha:
+- Sort:
+- Vetor:
