@@ -7,6 +7,8 @@ Este arquivo contém as Exceções previamente identificadas e que deverão ser 
 - Sort: 
 - Vetor:
 
+All: Alocação de memória
+
 
 A partir deste trecho, às seguintes exceções já foram resolvidas:
 - Busca:

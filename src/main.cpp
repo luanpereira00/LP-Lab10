@@ -21,7 +21,7 @@ using std::endl;
 using namespace EDB1;
 /**@brief Funcao principal */
 int main(){
-
+	/*
 	Lista<int> ll;
 	Deque<int> deq;
 	Fila<int> fi;
@@ -64,9 +64,9 @@ int main(){
 	printVetor(X, 50);
 	decimalSort(X, 50);
 	printVetor(X, 50);
+	*/
 	
-	
-	int V[5] = {1, 2, 4, 5, 8};
+	int V[5] = {0, 2, 4, 5, 8};
 	printVetor(V, 5);
 
 	cout << "BBR: " << buscaBinariaR(V, 5, 0) << endl;
@@ -105,5 +105,13 @@ int main(){
 	cout << "BTI: " << buscaTernariaI(V, 5, 8) << endl;
 	cout << "BTI: " << buscaTernariaI(V, 5, 10) << endl;
 	cout << endl;
+	cout << endl;
+	cout << "BBR: " << buscaBinariaR(V, 0, 0) << endl;
+	cout << "BBI: " << buscaBinariaI(V, 0, 0) << endl;
+	cout << "BTR: " << buscaTernariaR(V, 0, 0) << endl;
+	cout << "BTI: " << buscaTernariaI(V, 0, 0) << endl;
+	cout << "BSR: " << buscaSequencialR(V, 0, 0) << endl;
+	cout << "BSI: " << buscaSequencialI(V, 0, 0) << endl;
+
 	return 0;
 }

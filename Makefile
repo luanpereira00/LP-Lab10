@@ -43,7 +43,7 @@ debug: exec
 #linux
 linux: luan.a luan.so prog_estatico prog_dinamico
 
-luan.a: $(SRC_DIR)/main.cpp $(INC_DIR)/busca.h $(INC_DIR)/vetor.h $(INC_DIR)/sort.h $(INC_DIR)/pilha.h $(INC_DIR)/fila.h $(INC_DIR)/deque.h $(INC_DIR)/lista.h
+luan.a: $(SRC_DIR)/main.cpp $(INC_DIR)/busca.h $(INC_DIR)/vetor.h $(INC_DIR)/sort.h $(INC_DIR)/pilha.h $(INC_DIR)/fila.h $(INC_DIR)/deque.h $(INC_DIR)/lista.h $(INC_DIR)/exceptions.h 
 	$(CC) $(CFLAGS) -c $(SRC_DIR)/main.cpp -o $(OBJ_DIR)/main.o
 	$(AR) rcs $(LIB_DIR)/$@ $(OBJ_DIR)/main.o
 	@echo "++++ [Biblioteca estatica criada em $(LIB_DIR)/$@] +++" 
