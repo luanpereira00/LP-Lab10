@@ -24,8 +24,10 @@ namespace EDB1{
 	template <class T>
 	int buscaBinariaR(T *V, int N, T x){
 		try {
-			if(N<=0) throw TamanhoDeVetorInvalido();
+			if(N<1) throw TamanhoDeVetorInvalido();
 			else{
+				if(x<V[0])return -1;
+				if(V[N-1]<x) return -1;
 				int k=N/2;
 				if (V[k]==x) return k;
 				if (x<V[k]) return buscaBinariaR(V, k, x);
@@ -33,6 +35,7 @@ namespace EDB1{
 			}
 		} catch (TamanhoDeVetorInvalido &ex){
 			cerr << ex.what() << endl;
+			return -1;
 		}
 		return -1;
 	}
@@ -61,6 +64,7 @@ namespace EDB1{
 			}    
 		} catch (TamanhoDeVetorInvalido &ex){
 			cerr << ex.what() << endl;
+			return -1;
 		}                                   
 	   	return -1;        
 	}
@@ -90,6 +94,7 @@ namespace EDB1{
 			}
 		} catch (TamanhoDeVetorInvalido &ex){
 			cerr << ex.what() << endl;
+			return -1;
 		}  
 		return -1;
 	}
@@ -125,6 +130,7 @@ namespace EDB1{
 			}
 		} catch (TamanhoDeVetorInvalido &ex){
 			cerr << ex.what() << endl;
+			return -1;
 		}                                         
 	   	return -1;        
 	}
@@ -150,6 +156,7 @@ namespace EDB1{
 			}
 		} catch (TamanhoDeVetorInvalido &ex){
 			cerr << ex.what() << endl;
+			return -1;
 		}  
 		
 		return -1;
@@ -165,13 +172,15 @@ namespace EDB1{
 	template <class T>
 	int buscaSequencialR(T *V, int N, T x, int pos = 0){
 		try {      
-			if(N<=0) throw TamanhoDeVetorInvalido(); 
+			if(N<1) throw TamanhoDeVetorInvalido(); 
 			else{
 				if(V[0]==x) return pos;
-				else return buscaSequencialR((V+1), N-1, x, pos+1);
+				if(N>=2) return buscaSequencialR(&V[1], N-1, x, pos+1);
+				if(N==1) return -1;
 			}
 		} catch (TamanhoDeVetorInvalido &ex){
 			cerr << ex.what() << endl;
+			return -1;
 		}  
 		return -1;
 	}

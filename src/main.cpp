@@ -21,7 +21,7 @@ using std::endl;
 using namespace EDB1;
 /**@brief Funcao principal */
 int main(){
-	/*
+	
 	Deque<int> deq;
 	deq.removerInicio();
 	deq.removerFim();
@@ -61,7 +61,7 @@ int main(){
 	ll.remover();
 	ll.imprimir();
 	cout << ll.temAlgo() << endl;
-*/
+
 	Pilha<int> pil;
 	pil.pop();
 	cout << pil.top() << endl;
@@ -71,84 +71,13 @@ int main(){
 	pil.pop();
 	cout << pil.temAlgo() << endl;
 	
-
-	/*
-	int *X = new int[5];
-	int N = 5;
-
-	createVetor(X, N);
-	printVetor(X, N);
-	bubbleSort(X, N);
-	printVetor(X, N);
-	cout << "======================================" << endl;
-	createVetor(X, N);
-	printVetor(X, N);
-	insertionSort(X, N);
-	printVetor(X, N);
-	cout << "======================================" << endl;
-	createVetor(X, N);
-	printVetor(X, N);
-	selectionSort(X, N);
-	printVetor(X, N);
-	cout << "======================================" << endl;
-	createVetor(X, N);
-	printVetor(X, N);
-	mergeSort(X, N);
-	printVetor(X, N);
-	cout << "======================================" << endl;
-	createVetor(X, N);
-	printVetor(X, N);
-	quickSort(X, N);
-	printVetor(X, N);
-	cout << "======================================" << endl;
-	createVetor(X, N);
-	printVetor(X, N);
-	decimalSort(X, N);
-	printVetor(X, N);
-	delete X;*/
-	/*
 	int *V = new int[5];
 	createVetor(V, 5);
-	quickSort(V, N);
+	quickSort(V, 5);
+	cout << "ordenado" << endl;
 	printVetor(V, 5);
 	cout << "Aqui" << endl;
 
-	cout << "BBR: " << buscaBinariaR(V, 5, 0) << endl;
-	cout << "BBR: " << buscaBinariaR(V, 5, 1) << endl;
-	cout << "BBR: " << buscaBinariaR(V, 5, 3) << endl;
-	cout << "BBR: " << buscaBinariaR(V, 5, 4) << endl;
-	cout << "BBR: " << buscaBinariaR(V, 5, 9) << endl;
-	cout << endl;
-	cout << "BBI: " << buscaBinariaI(V, 5, 0) << endl;
-	cout << "BBI: " << buscaBinariaI(V, 5, 2) << endl;
-	cout << "BBI: " << buscaBinariaI(V, 5, 6) << endl;
-	cout << "BBI: " << buscaBinariaI(V, 5, 8) << endl;
-	cout << "BBI: " << buscaBinariaR(V, 5, 10) << endl;
-	cout << endl;
-	cout << "BSR: " << buscaSequencialR(V, 5, 0) << endl;
-	cout << "BSR: " << buscaSequencialR(V, 5, 1) << endl;
-	cout << "BSR: " << buscaSequencialR(V, 5, 3) << endl;
-	cout << "BSR: " << buscaSequencialR(V, 5, 4) << endl;
-	cout << "BSR: " << buscaSequencialR(V, 5, 9) << endl;
-	cout << endl;
-	cout << "BSI: " << buscaSequencialI(V, 5, 0) << endl;
-	cout << "BSI: " << buscaSequencialI(V, 5, 2) << endl;
-	cout << "BSI: " << buscaSequencialI(V, 5, 6) << endl;
-	cout << "BSI: " << buscaSequencialI(V, 5, 8) << endl;
-	cout << "BSI: " << buscaSequencialR(V, 5, 10) << endl;
-	cout << endl;
-	cout << "BTR: " << buscaTernariaR(V, 5, 0) << endl;
-	cout << "BTR: " << buscaTernariaR(V, 5, 1) << endl;
-	cout << "BTR: " << buscaTernariaR(V, 5, 3) << endl;
-	cout << "BTR: " << buscaTernariaR(V, 5, 4) << endl;
-	cout << "BTR: " << buscaTernariaR(V, 5, 9) << endl;
-	cout << endl;
-	cout << "BTI: " << buscaTernariaI(V, 5, 0) << endl;
-	cout << "BTI: " << buscaTernariaI(V, 5, 2) << endl;
-	cout << "BTI: " << buscaTernariaI(V, 5, 6) << endl;
-	cout << "BTI: " << buscaTernariaI(V, 5, 8) << endl;
-	cout << "BTI: " << buscaTernariaI(V, 5, 10) << endl;
-	cout << endl;
 	cout << endl;
 	cout << "BBR: " << buscaBinariaR(V, 0, 0) << endl;
 	cout << "BBI: " << buscaBinariaI(V, 0, 0) << endl;
@@ -156,6 +85,6 @@ int main(){
 	cout << "BTI: " << buscaTernariaI(V, 0, 0) << endl;
 	cout << "BSR: " << buscaSequencialR(V, 0, 0) << endl;
 	cout << "BSI: " << buscaSequencialI(V, 0, 0) << endl;
-	delete V;*/
+	//delete V;
 	return 0;
 }

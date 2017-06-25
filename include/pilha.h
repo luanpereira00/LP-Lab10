@@ -17,114 +17,122 @@ namespace EDB1{
 	template <typename T>
 
 	/** 
-	 * @class 	Pilha pilha.h
-	 * @brief 	Classe que representa uma Pilha de dados
-	 * @details Os atributos de uma pilha sao o vetor e o tamanho do vetor 
+	* struct nodePilha lista.h
+	* @brief Um struct para representar os nos de lista ligada
+	*/
+	struct nodePilha{
+		T dado; /**< Elemento generico do no*/
+		nodePilha* prox; /**< Apontador para o proximo no*/
+	};
+
+	/** @brief Declaracao de template para o tipo T (int, float, double...)*/
+	template <typename T>
+
+	/** 
+	 * @class 	Lista lista.h
+	 * @brief 	Classe que representa uma lista ligada ordenada duplamente encadeada de dados
+	 * @details O atributo de uma lista eh a sentinela de inicio
 	 */
 	class Pilha{
 	private:
-		T *vetor; /**< O vetor que contem a pilha*/
-		int tam; /**< O tamanho da pilha*/
+		nodePilha<T>* inicio; /**< Sentinela de inicio da lista*/
 
 	public:
-
-		/** 
-		* @brief Construtor parametrizado 
-		* @param *v O vetor 
-		* @param t O tamanho do vetor 
-		*/
-		Pilha(T *v, int t){
-			//construtor parametrizado
-			setVetor(v);
-			setTam(t);
-		}
-
-		/** @brief Construtor padrao*/
+		/** @brief Construtor padrao */
 		Pilha(){
-			tam=0;
-			//construtor padrao
+			inicio = new struct nodePilha<T>;
+
+			inicio->dado=0;
+			inicio->prox=NULL;
 		}
 
 		/** @brief Destrutor padrao */
 		~Pilha(){
-			if(getTam()>0) delete[] vetor;
-			tam=0;
-		}
-
-		/** @return Retorna o tamanho do vetor */
-		int getTam(){
-			return tam;
-		}
-
-		/** 
-		* @brief Modifica o tamanho do vetor 
-		* @param t O tamanho do vetor 
-		*/
-
-		void setTam(int t){
-			tam = t;
-		}
-
-		/** 
-		* @brief Modifica o ponteiro do vetor 
-		* @param *v O ponteiro do vetor 
-		*/
-		void setVetor(T *v){
-			vetor = v;
-		}
-
-		/** @return Retorna o ponteiro do vetor */
-		T* getVetor(){
-			return vetor;
-		}
-
-		/** 
-		* @brief Adiciona um elemento a pilha 
-		* @param elemento O elemento que sera adicionado
-		*/
-		void push(T elemento){
-			T *antigo = vetor;
-			
-			T *novo = new T[getTam()+1];
-			for (int  i=0; i<getTam(); i++) novo[i]=antigo[i];
-			novo[getTam()]=elemento;
-			setTam(getTam()+1);
-			setVetor(novo);
-			if(getTam()>0) delete[] antigo;
-		}
-
-		/** @return Retorna o elemento do topo da pilha */
-		T top(){ 
-			try{
-				if(getTam()>0){
-					return vetor[getTam()-1];
-				} else throw ImprimirTEDVazio();
-			}catch (ImprimirTEDVazio &ex){
-				cerr << ex.what() << endl;
+			nodePilha<T>* aux = inicio;
+			if(aux->prox){
+				nodePilha<T>* tmp = new nodePilha<T>;
+				tmp->prox=inicio->prox;
+				while(tmp->prox->prox){
+					delete aux;
+					aux = tmp->prox;
+					tmp->prox=tmp->prox->prox;
+				}
+				delete tmp->prox;;
+				delete tmp;
 			}
-			return 0;
+			delete aux;
 		}
 
-		/** @brief Remove o elemento do topo da pilha */
+		/** @return Retorna a sentinela de inicio da lista ligada*/
+		nodePilha<T>* getInicio(){
+			return inicio;
+		}
+
+		/** 
+		* @brief Insere um elemento ordenadamente na lista
+		* @param el O elemento que sera inserido na lista 
+		*/
+		void push(T el){
+			//cout << "Inserindo o elemento " << el << endl;
+			//nodeDeque<T>* it = buscar(el);
+			nodePilha<T>* it = inicio;
+			nodePilha<T>* tmp = new nodePilha<T>;
+			tmp->dado=el;
+			tmp->prox=it->prox;
+
+			it->prox=tmp;
+		}
+
+		/** 
+		* @brief Remove um elemento da lista ligada. (Informa também caso o elemento nao exista)
+		* @param el O elemento que sera removido da lista 
+		*/
 		void pop(){
+			//cout << endl;
+			//cout << "Removendo o elemento " << el << endl;
+			//nodeDeque<T>* it = buscar(el);
+			nodePilha<T>* it = inicio;
 			try{
-				if(getTam()>0) {
-					T *antigo = vetor;
-					T *novo = new T[getTam()-1];
-					for (int  i=0; i<getTam()-1; i++) novo[i]=antigo[i];
-					setTam(getTam()-1);
-					setVetor(novo);
-					delete[] antigo;
-				}else throw RemoverDeTEDVazio();
+				if(it->prox){
+					nodePilha<T>* tmp = new nodePilha<T>;
+					tmp->prox=it->prox->prox;
+
+					delete it->prox; 
+
+					it->prox=tmp->prox;
+
+					delete tmp; 
+				}
+				else throw RemoverDeTEDVazio();
 			}catch (RemoverDeTEDVazio &ex){
 				cerr << ex.what() << endl;
 			}
 		}
 
+		/** 
+		* @brief Remove um elemento da lista ligada. (Informa também caso o elemento nao exista)
+		* @param el O elemento que sera removido da lista 
+		*/
+		T top(){
+			//cout << endl;
+			//cout << "Removendo o elemento " << el << endl;
+			//nodeDeque<T>* it = buscar(el);
+			nodePilha<T>* it = inicio;
+			try{
+				if(it->prox){
+					return it->prox->dado;
+				}
+				else throw ImprimirTEDVazio();
+			}catch (ImprimirTEDVazio &ex){
+				cerr << ex.what() << endl;
+			}
+			return it->dado;
+		}
+
 		bool temAlgo(){
-			if(getTam()>0) return true;
+			if(inicio->prox) return true;
 			else return false;
-		}	
+		}
 	};
 }
 
