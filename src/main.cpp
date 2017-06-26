@@ -36,7 +36,6 @@ int main(){
 	deq.imprimir();
 	cout << deq.temAlgo() << endl;
 	
-	
 	Fila<int> fi;
 	fi.remover();
 	fi.imprimir();
@@ -49,7 +48,6 @@ int main(){
 	fi.imprimir();
 	cout << fi.temAlgo() << endl;
 	
-
 	Lista<int> ll;
 	ll.remover();
 	ll.imprimir();
@@ -73,10 +71,8 @@ int main(){
 	
 	int *V = new int[5];
 	createVetor(V, 5);
-	quickSort(V, 5);
-	cout << "ordenado" << endl;
+	bubbleSort(V, 5);
 	printVetor(V, 5);
-	cout << "Aqui" << endl;
 
 	cout << endl;
 	cout << "BBR: " << buscaBinariaR(V, 0, 0) << endl;
@@ -85,6 +81,26 @@ int main(){
 	cout << "BTI: " << buscaTernariaI(V, 0, 0) << endl;
 	cout << "BSR: " << buscaSequencialR(V, 0, 0) << endl;
 	cout << "BSI: " << buscaSequencialI(V, 0, 0) << endl;
-	//delete V;
+
+	cout << endl;
+	bubbleSort(V, 0);
+	insertionSort(V, 0);
+	selectionSort(V, 0);
+	mergeSort(V, 0);
+	decimalSort(V, 0);
+	quickSort(V, 0);
+
+	int *X = new int[5];
+	cout << endl;
+	createVetor(V, 0);
+	printVetor(V, 0);
+	initVetor(V, 0, 10);
+	trocaVetor(V, X, 0);
+	isOrdered(V, 0);
+
+
+	delete V;
+	delete X;
+
 	return 0;
 }

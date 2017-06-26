@@ -17,6 +17,8 @@ using std::endl;
 #include <cstdlib>
 #include <ctime>
 
+#include "exceptions.h"
+
 /**@brief Namespace para EDB1 */
 namespace EDB1{
 	/** @brief Declaracao de template para o tipo T (int, float, double...)*/
@@ -29,13 +31,20 @@ namespace EDB1{
 	* @return Sem retorno
 	*/
 	void printVetor(T *V, int N){
-		cout << "V = {";
-		for (int i=0; i<N; i++) {
-			if((i>0)&&(i<N)) cout << ", ";
-			cout << V[i];
+		try{
+			if(N<1) throw TamanhoDeVetorInvalido();
+			else{
+				cout << "V = {";
+				for (int i=0; i<N; i++) {
+					if((i>0)&&(i<N)) cout << ", ";
+					cout << V[i];
+				}
+				cout << "}\n" << endl;
+			}
+		} catch(TamanhoDeVetorInvalido &ex){
+			cerr << ex.what() << endl;
+			return;
 		}
-		cout << "}\n" << endl;
-		return;
 	}
 
 	/** @brief Declaracao de template para o tipo T (int, float, double...)*/
@@ -64,7 +73,15 @@ namespace EDB1{
 	* @return Sem retorno
 	*/
 	void trocaVetor(T *V, T *Vtemp, int N){
-		for (int i=0; i<N; i++) V[i]=Vtemp[i];
+		try{
+			if(N<1) throw TamanhoDeVetorInvalido();
+			else{
+				for (int i=0; i<N; i++) V[i]=Vtemp[i];
+			}
+		} catch(TamanhoDeVetorInvalido &ex){
+			cerr << ex.what() << endl;
+			return;
+		}
 	}
 
 	/** @brief Declaracao de template para o tipo T (int, float, double...)*/
@@ -78,7 +95,15 @@ namespace EDB1{
 	* @return Sem retorno
 	*/
 	void initVetor(T *V, int N, T valor){
-		for (int i=0; i<N; i++) V[i]=valor;
+		try{
+			if(N<1) throw TamanhoDeVetorInvalido();
+			else{
+				for (int i=0; i<N; i++) V[i]=valor;
+			}
+		} catch(TamanhoDeVetorInvalido &ex){
+			cerr << ex.what() << endl;
+			return;
+		}
 	}
 
 	/** @brief Declaracao de template para o tipo T (int, float, double...)*/
@@ -92,8 +117,15 @@ namespace EDB1{
 	* @return Sem retorno
 	*/
 	void createVetor(T *V, int N){
-		
-		for (int i=0; i<N; i++) V[i]=rand()%N;
+		try{
+			if(N<1) throw TamanhoDeVetorInvalido();
+			else{
+				for (int i=0; i<N; i++) V[i]=rand()%N;
+			}
+		} catch(TamanhoDeVetorInvalido &ex){
+			cerr << ex.what() << endl;
+			return;
+		}
 	}
 
 	/** @brief Declaracao de template para o tipo T (int, float, double...)*/
@@ -106,10 +138,18 @@ namespace EDB1{
 	* @return Sem retorno
 	*/
 	bool isOrdered(T *V, int N){
-		for (int i=0; i<N-1; i++) {
-			if(V[i]>V[i+1]) return false;
+		try{
+			if(N<1) throw TamanhoDeVetorInvalido();
+			else{
+				for (int i=0; i<N-1; i++) {
+					if(V[i]>V[i+1]) return false;
+				}
+				return true;
+			}
+		} catch(TamanhoDeVetorInvalido &ex){
+			cerr << ex.what() << endl;
+			return false;
 		}
-		return true;
 	}
 }
 
